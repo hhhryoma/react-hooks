@@ -5,6 +5,13 @@ const App = props => {
     const reset = () => {
         setState(props)
     }
+    useEffect(() => {
+        console.log('this like componetDidMount or componentDidUpdate.')
+    })
+
+    useEffect(() => {
+        console.log('this like componetDidMount.')
+    }, [])
     return (
         <>
             <p>現在の{state.name}は、{state.price}円です。</p>
