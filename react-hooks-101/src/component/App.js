@@ -1,7 +1,8 @@
-import React, {Fragment, useState, useReducer} from 'react'
+import React, {useState, useReducer} from 'react'
 
 import 'bootstrap/dist/css/bootstrap.min.css'
 
+import Event from "./Event";
 import reducer from '../reducers'
 
 const App = () => {
@@ -12,16 +13,15 @@ const App = () => {
 
   const addEvent = e => {
     e.preventDefault()
-    // dispath(action)
     dispatch({
       type: "CREATE_EVENT",
       title,
       body
     })
-
     setTitle('')
     setBody('')
   }
+
   return (
     <div className="container-fluid">
       <h4>イベント作成フォーム</h4>
@@ -49,6 +49,9 @@ const App = () => {
             <th></th>
           </tr>
         </thead>
+        <tbody>
+  { state.map((event, index) => (<Event key={index} event={event} dispatch={dispatch} />))}
+        </tbody>
       </table>
     </div>
   )
